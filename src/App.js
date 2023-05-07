@@ -15,15 +15,19 @@ class App extends Component {
   };
 
   handleAdd = (e) => {
-    if (this.state !== " ") {
+    if (this.state.text !== " ") {
       const items = [...this.state.items, this.state.text];
-
       this.setState({ items: items, text: "" });
     }
   };
 
-  deleteHandler = (e) => {
-    console.log("dffdfdf");
+  deleteHandler = (id) => {
+    const olditems = [...this.state.items];
+    const items = olditems.filter((element, i) => {
+      return i !== id;
+    });
+
+    this.setState({ items: items });
   };
 
   render() {
@@ -62,7 +66,6 @@ class App extends Component {
                       />
                     );
                   })}
-                  {console.log(this.state.items)}
                 </ul>
               </div>
             </div>
